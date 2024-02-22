@@ -16,7 +16,7 @@
 function shutdown() {
   echo "$(date) $(whoami) Received a signal to shutdown"
 
-  launchctl bootout system/com.apple.xsan
+  launchctl unload /System/Library/LaunchDaemons/com.apple.xsan.plist
 
   exit 0
 }
