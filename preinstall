@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Running preinstall script"
+
+# unload the daemon using launchctl 2.0 syntax
+
+# Send a SIGKILL to the daemon to stop it without running it's shutdown hook.
+launchctl kill SIGKILL system/edu.asu.jmc.shutdown-hook
+
+exit 0

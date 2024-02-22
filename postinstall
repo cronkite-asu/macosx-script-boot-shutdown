@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Running postinstall script"
+
+# load our daemon using launchctl 2.0 syntax
+launchctl bootstrap system /Library/LaunchDaemons/edu.asu.jmc.shutdown-hook.plist
+
+exit 0
