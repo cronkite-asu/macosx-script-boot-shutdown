@@ -11,10 +11,10 @@
 # In MacOS the kernel sends to all user-space daemons SIGTERM at system shutdown
 # or reboot. Use this script to catch this signal and run commands at shutdown.
 
-# The function that will get called when a SIGTERM signal is sent.
+# The function that will get called when a SIGTERM signal is recieved.
 # Put commands to run on shutdown here.
 function shutdown() {
-  echo `date` " " `whoami` " Received a signal to shutdown"
+  echo "$(date) $(whoami) Received a signal to shutdown"
 
   launchctl unload /System/Library/LaunchDaemons/com.apple.xsan.plist
 
@@ -24,7 +24,7 @@ function shutdown() {
 # Initialize the script and then wait for a signal.
 # Put commands to run when starting here.
 function startup() {
-  echo `date` " " `whoami` " Starting..."
+  echo "$(date) $(whoami) Starting..."
 
   tail -f /dev/null &
   wait $!
