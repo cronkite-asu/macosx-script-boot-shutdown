@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>edu.asu.jmc.shutdown.hook</string>
+	<string>edu.asu.jmc.shutdown-hook</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/local/bin/shutdown-hook.sh</string>
