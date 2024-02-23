@@ -24,7 +24,7 @@ rmPkgDaemon() {
 rmPkgFiles() {
 	local name=$1 # Launchd file to process.
 
-	[[ -z "$name" ]] && { echo "${FUNCNAME}(): Package name not specified"; exit 1; }
+	[[ -z "$name" ]] && { echo "${FUNCNAME}(): Package name not specified"; return 1; }
 
 	pkginfo=$(pkgutil --pkg-info-plist $name)
 	local volume=$(/usr/libexec/PlistBuddy -c 'print :volume' /dev/stdin <<< $pkginfo)
@@ -34,6 +34,7 @@ rmPkgFiles() {
 		local fullpath="${volume}${location}/${file}"
 		# Strip extra slashes from constructed path
 		fullpath="$(echo "${fullpath}" | tr -s /)"
+		[[ ! -f "$fullpath" ]] && continue
 		if [[ "$(dirname "$fullpath")" == "/Library/LaunchDaemons" ]]; then
 			rmPkgDaemon "$fullpath"
 		fi
