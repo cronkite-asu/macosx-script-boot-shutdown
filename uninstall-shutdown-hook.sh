@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pkg="edu.asu.jmc.shutdown-hook-xsan"
+pkg="edu.asu.jmc.pkg.shutdown-hook-xsan"
 
 # unload the daemon using launchctl 2.0 syntax
 rmPkgDaemon() {
