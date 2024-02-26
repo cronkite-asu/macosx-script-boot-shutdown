@@ -11,6 +11,6 @@
 	<key>RunAtLoad</key>
 	<true/>
 	<key>ExitTimeOut</key>
-	<integer>600</integer>
+	<integer>30</integer>
 </dict>
 </plist>
