@@ -3,6 +3,12 @@
 echo "Running postinstall script"
 
 # load our daemon using launchctl 2.0 syntax
-launchctl load -w /Library/LaunchDaemons/edu.asu.jmc.shutdown-hook.plist
+
+if launchctl print system/edu.asu.jmc.shutdown-hook; then
+    launchctl enable system/edu.asu.jmc.shutdown-hook
+    launchctl kickstart system/edu.asu.jmc.shutdown-hook
+else
+    launchctl load -w /Library/LaunchDaemons/edu.asu.jmc.shutdown-hook.plist
+fi
 
 exit 0
